@@ -17,6 +17,14 @@ vector<map<string, int>::const_iterator> val_count(const map<string, int>& m, in
 	return retval;
 }
 
+template<typename InputIterator, typename OutputIterator, typename Predicate, typename T>
+OutputIterator my_replace_copy_if(InputIterator first, InputIterator last, OutputIterator result, Predicate pred, const T& val) {
+	//Copies from source range[first, last) to destination range starting at position result.
+	//If an element in source makes pred true then it is replaced in the destination by val.
+	//Returns final value of the result iterator.
+	return OutputIterator();
+}
+
 void q1func() {
 	map<string, int> q1map;
 
@@ -54,7 +62,8 @@ void q2func() {
 	for (auto const& i : f2) {
 		cout << "\t" << i << endl;
 	}
-
+	
+	//TODO: Fix
 	//D: Insert  the  fruit  from  f2  which  start  with  the  string  "grape"  into  the  position  after  banana  in  f1  (Note: you will need to find these positions)
 	//vector<int*> matches = {};
 	//string findValue = "grape";
@@ -90,16 +99,51 @@ void q2func() {
 		cout << "\t" << i << endl;
 	}
 
+	//TODO: Fix
 	//H: Remove all fruit from f1 that contain the string "berry" and print it out.
-	for (auto it = f1.begin(); it != f1.end(); ++it) {
-		bool found = (*it).find("berry");
-		if (found) {
-			f1.erase(it);
-		}
-	}
+	//for (auto it = f1.begin(); it != f1.end(); ++it) {
+	//	bool found = (*it).find("berry");
+	//	if (found) {
+	//		f1.erase(it);
+	//	}
+	//}
 }
 
+void q3func() {
+	//Write your own version of the STL algorithm replace_copy_if().Since this function is already part of the standard library you might want to rename it.For example, my_replace_copy_if.
+	//TODO wtf is this question?
+	list<int> l{5, 7, 4, 2, 8, 6, 1, 9, 0, 3};
+	vector<int> v;
+	v.resize(l.size); 
+
+	my_replace_copy_if(l.begin(), l.end(), v.begin(), [](int n) {return n > 5; }, -1);
+}
+
+void q4func() {
+	//A:  Store the data in an appropriate STL container TODO
+
+	//B: Ask the user for a keyword (could be a part of the artist name or song title) and print out all entries that contain that keyword. TODO
+
+	//C: Print out all of the songs in the database in alphabetical order (don't list titles more than once) and give how many times that song occurs in the database. TODO
+
+}
+
+void q5func() {
+	//Overload the operator+ to concatenate two vectors. That is, if we had vectors v1: 1,3,5 and v2: 2,4,6 then v1+v2 would return a new vector: 1,3,5,2,4,6. 
+	//The only requirement is that the two vectors contain the same type of elements. Also, you must do this as a template function (i.e., don't just do this for vectors of ints).
+
+	vector<int>v1{ 3,5,6,1,7 }, v2{ 6,1,9,10 }, v3;
+	vector<string> w1{ "Hello" }, w2{ "World" }, w3;
+	//v3 = v1 + v2; //v3 should be 3,5,6,1,7,6,1,9,10
+	//w3 = w1 + w2;  //w3 should be “HelloWorld”
+}
+
+
+
 int main() {
-	q1func();
-	q2func();
+	q1func(); 
+	q2func(); //todo
+	q3func(); //todo
+	q4func(); //todo
+	q5func(); //todo
 }
