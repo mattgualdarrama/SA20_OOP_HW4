@@ -55,14 +55,14 @@ void q2func() {
 		cout << "\t" << i << endl;
 	}
 
-	vector<int*> matches = {};
-	string findValue = "grape";
-	int i = 0;
-	for (auto it = f2.begin(); it != f2.end(); ++it) {
-		if ((*it) == findValue)
-			matches.push_back(it);
-		
-	}
+	//vector<int*> matches = {};
+	//string findValue = "grape";
+	//int i = 0;
+	//for (auto it = f2.begin(); it != f2.end(); ++it) {
+	//	if ((*it) == findValue)
+	//		matches.push_back(it);
+	//	
+	//}
 
 	//E: Print out list f1:
 	cout << "\nList f1:\n";
@@ -73,7 +73,21 @@ void q2func() {
 	//F: Erase all of the fruit that come before kiwi from f1, then print out f1
 	auto kiwiIt = find(f1.begin(), f1.end(), "kiwi");
 
+	f1.erase(f1.begin(), kiwiIt);
+	cout << "\nList f1:\n";
+	for (auto const& i : f1) {
+		cout << "\t" << i << endl;
+	}
 
+	//G: Randomly permute the list f2 and then print it out
+	vector<string> temp(f2.begin(), f2.end());
+	random_shuffle(temp.begin(), temp.end());
+	f2.clear();
+	copy(temp.begin(), temp.end(), std::back_inserter(f2));
+	cout << "\nList f2 Permuted:\n";
+	for (auto const& i : f2) {
+		cout << "\t" << i << endl;
+	}
 }
 
 int main() {
