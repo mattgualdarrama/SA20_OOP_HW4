@@ -42,7 +42,7 @@ void q2func() {
 		cout << "\t" << i << endl;
 	}
 
-	//C: Sort the lists (seperatly) and print them out: TODO
+	//C: Sort the lists (seperatly) and print them out:
 	f1.sort();
 	cout << "\nList f1 sorted:\n";
 	for (auto const& i : f1) {
@@ -55,6 +55,7 @@ void q2func() {
 		cout << "\t" << i << endl;
 	}
 
+	//D: Insert  the  fruit  from  f2  which  start  with  the  string  "grape"  into  the  position  after  banana  in  f1  (Note: you will need to find these positions)
 	//vector<int*> matches = {};
 	//string findValue = "grape";
 	//int i = 0;
@@ -83,10 +84,18 @@ void q2func() {
 	vector<string> temp(f2.begin(), f2.end());
 	random_shuffle(temp.begin(), temp.end());
 	f2.clear();
-	copy(temp.begin(), temp.end(), std::back_inserter(f2));
+	copy(temp.begin(), temp.end(), back_inserter(f2));
 	cout << "\nList f2 Permuted:\n";
 	for (auto const& i : f2) {
 		cout << "\t" << i << endl;
+	}
+
+	//H: Remove all fruit from f1 that contain the string "berry" and print it out.
+	for (auto it = f1.begin(); it != f1.end(); ++it) {
+		bool found = (*it).find("berry");
+		if (found) {
+			f1.erase(it);
+		}
 	}
 }
 
