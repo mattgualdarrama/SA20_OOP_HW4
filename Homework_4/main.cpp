@@ -35,6 +35,36 @@ vector<T> operator+(const vector<T>& v1, const vector<T>& v2)
 	return temp;
 }
 
+list<pair<string,string>> loadDatabase() {
+	//Doing this manually so no need to read a file in and can keep the project in one file
+	pair<string, string> a[18];
+	a[0].first = "Billie Holiday";		a[0].second = "Summertime";
+	a[1].first = "Billie Holiday";		a[1].second = "I Can't Get Started";
+	a[2].first = "Woody Guthriey";		a[2].second = "The Titanic";
+	a[3].first = "Ernest Stone";		a[3].second = "The Titanic";
+	a[4].first = "Bix Beiderbecke";		a[4].second = "Singin' the Blues";
+	a[5].first = "Bix Beiderbecke";		a[5].second = "In a Mist";
+	a[6].first = "Ruth Etting";			a[6].second = "Singin' the Blues";
+	a[7].first = "Bunny Berigan";		a[7].second = "Singin' the Blues";
+	a[8].first = "Louis Armstrong";		a[8].second = "West End Blues";
+	a[9].first = "Louis Armstrong";		a[9].second = "Stardust";
+	a[10].first = "Louis Armstrong";	a[10].second = "Knee Drops";
+	a[11].first = "Jack Jenny";			a[11].second = "Stardust";
+	a[12].first = "Sidney Bechet";		a[12].second = "Summertime";
+	a[13].first = "Sidney Bechet";		a[13].second = "Wild Man Blues";
+	a[14].first = "Cootie Williams";	a[14].second = "West End Blues";
+	a[15].first = "Frank Hutchison";	a[15].second = "The Last Scene of the Titanic";
+	a[16].first = "Frank Hutchison";	a[16].second = "Worried Blues";
+	a[17].first = "Doc Watson";			a[17].second = "Worried Blues";
+
+	list < pair<string, string>> temp;
+	for (int i = 0; i < 18; i++) {
+		temp.push_back(a[i]);
+	}
+
+	return temp;
+}
+
 void q1func() {
 	map<string, int> q1map;
 
@@ -130,9 +160,22 @@ void q3func() {
 }
 
 void q4func() {
-	//A:  Store the data in an appropriate STL container TODO
+	//A:  Store the data in an appropriate STL container
+	list <pair<string, string>> database;
+	list<pair<string, string>> dbList;
+	dbList = loadDatabase();
+
+	cout << "\nMusic Database:" << endl;
+	for (auto it = dbList.begin(); it != dbList.end(); ++it) {
+		cout << it->first << "\t\t" << it->second << endl;
+	}
 
 	//B: Ask the user for a keyword (could be a part of the artist name or song title) and print out all entries that contain that keyword. TODO
+	cout << "\nUser Input:" << endl;
+	cout << "\t Enter a search term";
+	string input;
+	getline(cin, input);
+
 
 	//C: Print out all of the songs in the database in alphabetical order (don't list titles more than once) and give how many times that song occurs in the database. TODO
 
@@ -146,7 +189,7 @@ void q5func() {
 	vector<string> w1{ "Hello" }, w2{ "World" }, w3;
 	v3 = v1 + v2; //v3 should be 3,5,6,1,7,6,1,9,10
 
-	cout << "V3:" << endl;
+	cout << "\nV3:" << endl;
 	for (size_t i = 0; i < v3.size(); i++) {
 		cout << v3.at(i) << "\t";
 	}
@@ -160,8 +203,6 @@ void q5func() {
 	}
 	cout << endl;
 }
-
-
 
 int main() {
 	q1func(); 
