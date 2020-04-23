@@ -25,6 +25,16 @@ OutputIterator my_replace_copy_if(InputIterator first, InputIterator last, Outpu
 	return OutputIterator();
 }
 
+template <typename T>
+vector<T> operator+(const vector<T>& v1, const vector<T>& v2)
+{
+	vector<T> temp;
+	temp.reserve(v1.size() + v2.size());
+	temp.insert(temp.end(), v1.begin(), v1.end());
+	temp.insert(temp.end(), v2.begin(), v2.end());
+	return temp;
+}
+
 void q1func() {
 	map<string, int> q1map;
 
@@ -112,11 +122,11 @@ void q2func() {
 void q3func() {
 	//Write your own version of the STL algorithm replace_copy_if().Since this function is already part of the standard library you might want to rename it.For example, my_replace_copy_if.
 	//TODO wtf is this question?
-	list<int> l{5, 7, 4, 2, 8, 6, 1, 9, 0, 3};
-	vector<int> v;
-	v.resize(l.size); 
+	//list<int> l{5, 7, 4, 2, 8, 6, 1, 9, 0, 3};
+	//vector<int> v;
+	//v.resize(l.size); 
 
-	my_replace_copy_if(l.begin(), l.end(), v.begin(), [](int n) {return n > 5; }, -1);
+	//my_replace_copy_if(l.begin(), l.end(), v.begin(), [](int n) {return n > 5; }, -1);
 }
 
 void q4func() {
@@ -134,8 +144,21 @@ void q5func() {
 
 	vector<int>v1{ 3,5,6,1,7 }, v2{ 6,1,9,10 }, v3;
 	vector<string> w1{ "Hello" }, w2{ "World" }, w3;
-	//v3 = v1 + v2; //v3 should be 3,5,6,1,7,6,1,9,10
-	//w3 = w1 + w2;  //w3 should be “HelloWorld”
+	v3 = v1 + v2; //v3 should be 3,5,6,1,7,6,1,9,10
+
+	cout << "V3:" << endl;
+	for (size_t i = 0; i < v3.size(); i++) {
+		cout << v3.at(i) << "\t";
+	}
+	cout << endl;
+	
+	w3 = w1 + w2;  //w3 should be “HelloWorld”
+
+	cout << "W3:" << endl;
+	for (size_t i = 0; i < w3.size(); i++) {
+		cout << w3.at(i) << "\t";
+	}
+	cout << endl;
 }
 
 
@@ -145,5 +168,5 @@ int main() {
 	q2func(); //todo
 	q3func(); //todo
 	q4func(); //todo
-	q5func(); //todo
+	q5func(); 
 }
