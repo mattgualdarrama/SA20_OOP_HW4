@@ -4,6 +4,7 @@
 #include <vector>
 #include <list>
 #include <algorithm>
+#include <set>
 using namespace std;
 
 vector<map<string, int>::const_iterator> val_count(const map<string, int>& m, int val) {
@@ -171,13 +172,16 @@ void q4func() {
 	}
 
 	//B: Ask the user for a keyword (could be a part of the artist name or song title) and print out all entries that contain that keyword. TODO
-	cout << "\nUser Input:" << endl;
-	cout << "\t Enter a search term";
-	string input;
-	getline(cin, input);
-
+	cout << "\nUser Input:" << endl << "\t Enter a search term:\t";
+	string input;	getline(cin, input);
 
 	//C: Print out all of the songs in the database in alphabetical order (don't list titles more than once) and give how many times that song occurs in the database. TODO
+	list<pair<string, int>> songList;
+	pair<string, int> temp;
+	for (auto it = dbList.begin(); it != dbList.end(); it++) {
+		temp.first = it->second; temp.second = 1;
+		cout << temp.first << "\t" << temp.second << endl;
+	}
 
 }
 
