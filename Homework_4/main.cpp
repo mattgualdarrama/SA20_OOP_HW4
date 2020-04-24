@@ -241,7 +241,7 @@ void q5func() {
 
 int main() {
 	q1func(); 
-	q2func(); //todo
+	q2func(); 
 	q3func(); //todo
 	q4func(); //todo
 	q5func(); 
