@@ -205,11 +205,15 @@ void q4func() {
 	//C: Print out all of the songs in the database in alphabetical order (don't list titles more than once) and give how many times that song occurs in the database. TODO
 	list<pair<string, int>> songList;
 	pair<string, int> temp;
+	
 	for (auto it = dbList.begin(); it != dbList.end(); it++) {
 		temp.first = it->second; temp.second = 1;
-		cout << temp.first << "\t" << temp.second << endl;
 	}
+	songList.sort();
 
+	for (auto it = songList.begin(); it != songList.end(); it++) {
+		cout << it->first << endl;
+	}
 }
 
 void q5func() {
