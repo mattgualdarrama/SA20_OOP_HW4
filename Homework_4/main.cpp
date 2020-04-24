@@ -104,7 +104,6 @@ void q2func() {
 		cout << "\t" << i << endl;
 	}
 	
-	//TODO: Fix
 	//D: Insert  the  fruit  from  f2  which  start  with  the  string  "grape"  into  the  position  after  banana  in  f1  (Note: you will need to find these positions)
 	//Find every word that has "grape" in it
 	string findValue = "grape";
@@ -119,12 +118,13 @@ void q2func() {
 
 	//find the location of banana in F1
 	list<string>::iterator bananaIndex;
+	
 	for (auto it = f1.begin(); it != f1.end(); ++it) {
 		if ((*it) == "banana") {
 			bananaIndex = it;
 		}
 	}
-
+	bananaIndex++;
 	//insert grape words into f1
 	for (auto it = matches.begin(); it != matches.end(); ++it) {
 		f1.insert(bananaIndex, (*it));
