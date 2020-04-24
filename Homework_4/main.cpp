@@ -209,11 +209,11 @@ void q4func() {
 	for (auto it = dbList.begin(); it != dbList.end(); it++) {
 		temp.first = it->second; temp.second = 1;
 	}
-	songList.sort();
+	//sort(songList.begin(), songList.end());
 
-	for (auto it = songList.begin(); it != songList.end(); it++) {
-		cout << it->first << endl;
-	}
+	//for (auto it = songList.begin(); it != songList.end(); it++) {
+	//	cout << it->first << endl;
+	//}
 }
 
 void q5func() {
