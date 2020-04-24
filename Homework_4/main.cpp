@@ -191,9 +191,16 @@ void q4func() {
 		cout << it->first << "\t\t" << it->second << endl;
 	}
 
-	//B: Ask the user for a keyword (could be a part of the artist name or song title) and print out all entries that contain that keyword. TODO
-	cout << "\nUser Input:" << endl << "\t Enter a search term:\t";
+	//B: Ask the user for a keyword (could be a part of the artist name or song title) and print out all entries that contain that keyword.
+	cout << "\nUser Input:" << endl << "\t Enter a search term (Case Sensative):\t";
 	string input;	getline(cin, input);
+
+	for (auto it = dbList.begin(); it != dbList.end(); ++it) {
+		if ((*it).first.find(input) != string::npos || (*it).second.find(input) != string::npos) {
+			cout << (*it).first << "\t" << (*it).second << endl;
+		}
+	}
+	cout << "end of search results" << endl;
 
 	//C: Print out all of the songs in the database in alphabetical order (don't list titles more than once) and give how many times that song occurs in the database. TODO
 	list<pair<string, int>> songList;
