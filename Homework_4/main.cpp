@@ -37,7 +37,7 @@ vector<T> operator+(const vector<T>& v1, const vector<T>& v2)
 }
 
 list<pair<string,string>> loadDatabase() {
-	//Doing this manually so no need to read a file in and can keep the project in one file
+	//Doing this manually to eliminate the need to read a file in and can keep the project in one file
 	pair<string, string> a[18];
 	a[0].first = "Billie Holiday";		a[0].second = "Summertime";
 	a[1].first = "Billie Holiday";		a[1].second = "I Can't Get Started";
@@ -106,17 +106,32 @@ void q2func() {
 	
 	//TODO: Fix
 	//D: Insert  the  fruit  from  f2  which  start  with  the  string  "grape"  into  the  position  after  banana  in  f1  (Note: you will need to find these positions)
-	//vector<int*> matches = {};
-	//string findValue = "grape";
-	//int i = 0;
-	//for (auto it = f2.begin(); it != f2.end(); ++it) {
-	//	if ((*it) == findValue)
-	//		matches.push_back(it);
-	//	
-	//}
+	//Find every word that has "grape" in it
+	string findValue = "grape";
+	list<string> matches = {};
+
+	//Find every instance of the string "grape" in f2
+	for (auto it = f2.begin(); it != f2.end(); ++it) {
+		if ((*it).find(findValue) != string::npos) {
+			matches.push_back((*it));
+		}
+	}
+
+	//find the location of banana in F1
+	list<string>::iterator bananaIndex;
+	for (auto it = f1.begin(); it != f1.end(); ++it) {
+		if ((*it) == "banana") {
+			bananaIndex = it;
+		}
+	}
+
+	//insert grape words into f1
+	for (auto it = matches.begin(); it != matches.end(); ++it) {
+		f1.insert(bananaIndex, (*it));
+	}
 
 	//E: Print out list f1:
-	cout << "\nList f1:\n";
+	cout << "\nList f1 with grape:\n";
 	for (auto const& i : f1) {
 		cout << "\t" << i << endl;
 	}
@@ -125,7 +140,7 @@ void q2func() {
 	auto kiwiIt = find(f1.begin(), f1.end(), "kiwi");
 
 	f1.erase(f1.begin(), kiwiIt);
-	cout << "\nList f1:\n";
+	cout << "\nList f1 with fruit before kiwi erased:\n";
 	for (auto const& i : f1) {
 		cout << "\t" << i << endl;
 	}
@@ -140,14 +155,19 @@ void q2func() {
 		cout << "\t" << i << endl;
 	}
 
-	//TODO: Fix
 	//H: Remove all fruit from f1 that contain the string "berry" and print it out.
-	//for (auto it = f1.begin(); it != f1.end(); ++it) {
-	//	bool found = (*it).find("berry");
-	//	if (found) {
-	//		f1.erase(it);
-	//	}
-	//}
+	for (auto it = f1.begin(); it != f1.end(); ++it) {
+		size_t found = (*it).find("berry");
+		if (found != string::npos) {
+			(*it) = "berry";
+		}
+	}
+	//This is really "hacky"
+	f1.remove("berry");
+	cout << "\nList f1 with berry removed:\n";
+	for (auto const& i : f1) {
+		cout << "\t" << i << endl;
+	}
 }
 
 void q3func() {
