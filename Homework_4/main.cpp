@@ -5,6 +5,7 @@
 #include <list>
 #include <algorithm>
 #include <set>
+#include <iterator>
 using namespace std;
 
 vector<map<string, int>::const_iterator> val_count(const map<string, int>& m, int val) {
@@ -23,7 +24,14 @@ OutputIterator my_replace_copy_if(InputIterator first, InputIterator last, Outpu
 	//Copies from source range[first, last) to destination range starting at position result.
 	//If an element in source makes pred true then it is replaced in the destination by val.
 	//Returns final value of the result iterator.
-	return OutputIterator();
+
+	while (first != last) {
+		*result = (pred(*first)) ? val : *first;
+		first++;
+		result++;
+	}
+
+	return result;
 }
 
 template <typename T>
@@ -171,15 +179,16 @@ void q2func() {
 }
 
 void q3func() {
-	//Write your own version of the STL algorithm replace_copy_if().Since this function is already part of the standard library you might want to rename it.For example, my_replace_copy_if.
-	//TODO wtf is this question?
-	//list<int> l{5, 7, 4, 2, 8, 6, 1, 9, 0, 3};
-	//vector<int> v;
-	//v.resize(l.size); 
+	//Write your own version of the STL algorithm replace_copy_if().Since this function is already part of the standard library you might want to rename it.For example, my_replace_copy_if.                                                                
+	list<int> l{5, 7, 4, 2, 8, 6, 1, 9, 0, 3};
+	vector<int> v;
+	v.resize(l.size()); 
 
-	//my_replace_copy_if(l.begin(), l.end(), v.begin(), [](int n) {return n > 5; }, -1);
+	my_replace_copy_if(l.begin(), l.end(), v.begin(), [](int n) {return n > 5; }, -1);
+	copy(v.begin(), v.end(), ostream_iterator<int>(cout, ","));
+	cout << endl;
 }
-
+                                
 void q4func() {
 	//A:  Store the data in an appropriate STL container
 	list <pair<string, string>> database;
@@ -215,7 +224,7 @@ void q4func() {
 	//	cout << it->first << endl;
 	//}
 }
-
+             
 void q5func() {
 	//Overload the operator+ to concatenate two vectors. That is, if we had vectors v1: 1,3,5 and v2: 2,4,6 then v1+v2 would return a new vector: 1,3,5,2,4,6. 
 	//The only requirement is that the two vectors contain the same type of elements. Also, you must do this as a template function (i.e., don't just do this for vectors of ints).
@@ -238,11 +247,11 @@ void q5func() {
 	}
 	cout << endl;
 }
-
+                                                                                           
 int main() {
-	q1func(); 
-	q2func(); 
+	//q1func(); 
+	//q2func(); 
 	q3func(); //todo
-	q4func(); //todo
-	q5func(); 
+	//q4func();                                                                                                                                                                                                                                                                          
+	//q5func(); 
 }
