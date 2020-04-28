@@ -164,14 +164,20 @@ void q2func() {
 	}
 
 	//H: Remove all fruit from f1 that contain the string "berry" and print it out.
-	for (auto it = f1.begin(); it != f1.end(); ++it) {
-		size_t found = (*it).find("berry");
-		if (found != string::npos) {
-			(*it) = "berry";
+	vector<list<string>::iterator> berryLocs;
+
+	for (list<string>::iterator it = f1.begin(); it != f1.end(); ++it)
+	{
+		string str = *it;
+		if (str.find("berry") != std::string::npos)
+		{
+			berryLocs.push_back(it);
 		}
 	}
-	//This is really "hacky"
-	f1.remove("berry");
+
+	for (auto& it : berryLocs)
+		f1.erase(it);
+
 	cout << "\nList f1 with berry removed:\n";
 	for (auto const& i : f1) {
 		cout << "\t" << i << endl;
@@ -250,8 +256,8 @@ void q5func() {
                                                                                            
 int main() {
 	//q1func(); 
-	//q2func(); 
+	q2func(); 
 	//q3func();                                                                                                                                                                                                                                                                         
-	q4func(); //TODO                                                                                                                                                                                                                                                                      
+	//q4func();                                                                                                                                                                                                                                                                      
 	//q5func(); 
 }
